@@ -1,0 +1,23 @@
+#article {
+    margin-left: 50px;margin-bottom: 20px;
+     background-color: beige; 
+     display: block; 
+     width: 50%;
+     border-radius: 10px;
+}
+
+#article a {
+    margin: 10px;
+}
+
+body {
+    background-image: url('https://cdn.pixabay.com/photo/2014/10/04/16/55/wooden-cubes-473703_960_720.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    
+}
+
+#navbar {
+    background-color: #BDB76B;
+    padding-left: 10px;
+}

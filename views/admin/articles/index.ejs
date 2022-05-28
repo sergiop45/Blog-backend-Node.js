@@ -1,0 +1,61 @@
+<%- include('../../partials/header.ejs') %>
+
+<%- include('../../partials/navbar.ejs')%>
+
+<a href="/admin/articles/new" class="btn" style="background-color:#BDB76B;
+ color: aliceblue;
+">Novo Arquivo</a>
+
+<h1 style=" color:brown; margin:50px; ">Artigos</h1>
+
+<% artigos.forEach(article => { %>
+    <% if (article.title != '' ) { %>
+    <div  id="article" >
+    <h2 style="margin: 50px 20px;"><%= article.title %></h2>
+    
+    <p style="margin: 50px 20px; width: 50%;" class="corpoArtigo"><%= article.body %> 
+    </p> 
+    
+    <a href="/admin/articles/edit/<%= article.id %>" class="btn btn-info">Editar</a>
+    <a href="/admin/articles/delete/<%= article.id %>" id="btnDelete" class="btn btn-danger">Deletar</a>
+   
+    </div>
+    <% } %>
+<% }) %>
+
+
+<%- include('../../partials/footer.ejs') %>
+
+<script>
+    removerTagP();
+
+    let btnDelete = document.querySelector("#btnDelete");
+    
+    var attDelete = btnDelete.getAttribute("href");
+
+    btnDelete.addEventListener("click", function(event) {
+        event.preventDefault()
+        var decision = confirm("Deseja Cancelar categoria?");
+        if (decision) {
+        window.location.href = attDelete;
+        }
+    });
+
+
+    function removerTagP() {
+    let body = document.querySelectorAll(".corpoArtigo");
+    
+    for (var i = 0; i < body.length; i++){
+        body[i].textContent =  removerTags(body[i].textContent);
+    }
+    
+    function removerTags(html){
+    const data = new DOMParser().parseFromString(html, 'text/html');
+    return data.body.textContent || "";
+    }
+    
+
+    
+    }
+
+</script>
